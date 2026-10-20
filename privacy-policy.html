@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4f8ff">
+  <meta name="description" content="NetKilit Android uygulamasının gizlilik politikası ve veri işleme açıklamaları.">
+  <title>Gizlilik Politikası | NetKilit</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14213d;
+      --muted: #53627a;
+      --blue: #1458d4;
+      --blue-dark: #0d347e;
+      --line: #e0e8f4;
+      --surface: #fff;
+      --canvas: #f4f8ff;
+      --soft-blue: #eaf2ff;
+      --soft-green: #eaf8f0;
+      --green: #16764a;
+      --shadow: 0 18px 55px rgba(24, 54, 104, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 90% 0%, rgba(85, 148, 255, .14), transparent 34rem),
+        var(--canvas);
+      color: var(--ink);
+      font: 16px/1.72 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    a { color: var(--blue); text-underline-offset: 3px; }
+    a:hover { color: var(--blue-dark); }
+
+    .page {
+      width: min(100% - 32px, 920px);
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0d347e, #1458d4 62%, #317be8);
+      box-shadow: 0 24px 65px rgba(13, 52, 126, .2);
+      color: #fff;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -90px;
+      bottom: -190px;
+      width: 390px;
+      height: 390px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(255, 255, 255, .05), 0 0 0 70px rgba(255, 255, 255, .04);
+      content: "";
+    }
+
+    .brand, .eyebrow, .meta, .hero h1, .hero p { position: relative; z-index: 1; }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 34px;
+      font-size: 1.04rem;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .15);
+      font-size: 1.4rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #dce9ff;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    .hero h1 {
+      max-width: 680px;
+      margin-bottom: 12px;
+      font-size: clamp(2.1rem, 6vw, 3.55rem);
+      line-height: 1.1;
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: #e7efff;
+      font-size: 1.04rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 27px;
+    }
+
+    .meta span {
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: #f4f7ff;
+      font-size: .86rem;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .summary article, .policy, .contact {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .summary article { padding: 21px; }
+    .summary strong { display: block; margin-bottom: 5px; font-size: .98rem; }
+    .summary p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+    .policy { padding: clamp(24px, 5vw, 48px); }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 34px;
+      padding: 0 0 25px;
+      border-bottom: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .toc a {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      font-size: .84rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    section { scroll-margin-top: 24px; }
+    section + section { margin-top: 32px; padding-top: 30px; border-top: 1px solid var(--line); }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.22rem, 3vw, 1.5rem);
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
+    h3 { margin: 20px 0 6px; font-size: 1rem; }
+    p { margin-bottom: 12px; color: var(--muted); }
+    ul { margin: 8px 0 14px; padding-left: 23px; color: var(--muted); }
+    li + li { margin-top: 5px; }
+
+    .callout {
+      margin: 18px 0;
+      padding: 17px 19px;
+      border: 1px solid #d6e5ff;
+      border-radius: 16px;
+      background: var(--soft-blue);
+      color: #243b60;
+    }
+
+    .callout.green {
+      border-color: #d2ebdc;
+      background: var(--soft-green);
+      color: #24523a;
+    }
+
+    .callout strong { color: var(--ink); }
+
+    .contact {
+      margin-top: 20px;
+      padding: 25px clamp(24px, 5vw, 42px);
+      background: linear-gradient(135deg, #fff, #f9fbff);
+    }
+
+    .contact p:last-child { margin-bottom: 0; }
+
+    footer {
+      padding: 24px 8px 0;
+      color: #697790;
+      font-size: .84rem;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 20px, 920px); padding-top: 10px; }
+      .hero { border-radius: 23px; }
+      .brand { margin-bottom: 26px; }
+      .summary { grid-template-columns: 1fr; gap: 10px; margin: 12px 0; }
+      .summary article { padding: 17px 19px; }
+      .policy { border-radius: 20px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; padding: 0; }
+      .hero, .policy, .summary article, .contact { box-shadow: none; }
+      .toc { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">◆</span> Netkilit</div>
+      <p class="eyebrow">Gizlilik ve veri kullanımı</p>
+      <h1>Gizlilik Politikası</h1>
+      <p>Bu politika, Netkilit Android uygulamasının hangi bilgileri cihazınızda işlediğini, reklam hizmetlerinin rolünü ve tercihlerinizi nasıl yönetebileceğinizi açıklar.</p>
+      <div class="meta">
+        <span>Son güncelleme: 20 Ekim 2026</span>
+        <span>Android uygulaması</span>
+        <span>Paket: com.netkilit.app</span>
+      </div>
+    </header>
+
+    <div class="summary" aria-label="Gizlilik özeti">
+      <article>
+        <strong>Hesap veya sunucu yok</strong>
+        <p>Netkilit kullanıcı hesabı ya da kendi VPN sunucusunu işletmez.</p>
+      </article>
+      <article>
+        <strong>Trafik cihazda düşürülür</strong>
+        <p>VPN paketleri Netkilit tarafından uzak bir sunucuya aktarılmaz.</p>
+      </article>
+      <article>
+        <strong>Reklam sağlayıcısı farklıdır</strong>
+        <p>Reklamlar etkin olduğunda Google SDK’ları kendi hizmetleri için veri işleyebilir.</p>
+      </article>
+    </div>
+
+    <article class="policy">
+      <nav aria-label="Sayfa içeriği">
+        <ul class="toc">
+          <li><a href="#scope">Kapsam</a></li>
+          <li><a href="#data">İşlenen bilgiler</a></li>
+          <li><a href="#ads">Reklamlar</a></li>
+          <li><a href="#sharing">Paylaşım ve aktarım</a></li>
+          <li><a href="#choices">Kontrolleriniz</a></li>
+          <li><a href="#children">Çocukların gizliliği</a></li>
+          <li><a href="#changes">Değişiklikler</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <section id="scope">
+        <h2>1. Kapsam ve sorumlu</h2>
+        <p>Bu politika, Android’de <strong>com.netkilit.app</strong> paket kimliğiyle sunulan Netkilit uygulaması için geçerlidir. Uygulama, Android’in VpnService altyapısını kullanarak kullanıcının seçtiği internet trafiğini cihaz üzerinde engeller; bir VPN sağlayıcısı veya anonimleştirme hizmeti değildir.</p>
+        <p>Gizlilikle ilgili sorular için aşağıdaki e-posta adresinden Netkilit uygulama yayıncısına ulaşabilirsiniz. Uygulamanın dağıtıldığı ülkede mevzuat veri sorumlusunun tüzel kişi adını veya ek iletişim bilgilerini gerektiriyorsa, yayıncı bu bilgileri burada yayımdan önce tamamlamalıdır.</p>
+      </section>
+
+      <section id="data">
+        <h2>2. Netkilit’in cihazda işlediği bilgiler</h2>
+        <h3>VPN trafiği</h3>
+        <p>VPN izni verildiğinde Android, seçilen kapsama giren paketleri Netkilit’in yerel VPN arayüzüne yönlendirir. Uygulamanın engelleme motoru bu paketleri okuyup aktarılmadan düşürür. Netkilit paket içeriğini, ziyaret edilen alan adlarını veya bağlantı geçmişini kendi sunucusuna göndermez; uygulamada kullanıcı trafiği için uzak sunucu veya backend yoktur.</p>
+        <div class="callout green"><strong>Önemli:</strong> Tüm uygulamalar engellendiğinde reklamlar dâhil internet gerektiren diğer hizmetler çalışmayabilir. VPN kapsamı ve Android/cihaz davranışları değişebileceğinden her trafiğin her koşulda engelleneceği garanti edilmez.</div>
+
+        <h3>Tercihler ve uygulama kilidi</h3>
+        <p>Uygulama; dil ve ilk kullanım tercihini, engelleme kapsamındaki uygulamaların paket adlarını ve zamanlayıcı bilgilerini cihazınızda saklayabilir. VPN açıklamasına verdiğiniz onay da cihazda tutulur. Kilit için girdiğiniz desen veya parola düz metin olarak saklanmaz; doğrulama için tuzlanmış, türetilmiş bir değer güvenli cihaz depolamasında tutulur.</p>
+
+        <h3>Uygulama listesi</h3>
+        <p>Uygulama bazlı engelleme ayarını kullanırsanız Android’den başlatılabilir uygulamaların adları, ikonları ve paket adları alınarak listede gösterilir. Bu liste cihaz üzerinde seçim yapmanız içindir; Netkilit tarafından bir sunucuya yüklenmez. Seçtiğiniz paket adları engelleme tercihinizle birlikte cihazda saklanır.</p>
+
+        <h3>Tanılama</h3>
+        <p>Netkilit’te kullanıcı trafiği, alan adı geçmişi veya reklam dışı kullanım analitiği toplamak üzere bir backend bulunmaz. Uygulama ve Android, servis hatalarını işletim sistemi tanılama günlüklerine yazabilir; bu günlükler cihaz ve üretici araçları tarafından yönetilir.</p>
+      </section>
+
+      <section id="ads">
+        <h2>3. Reklamlar ve Google gizlilik SDK’ları</h2>
+        <p>Reklamların etkin olduğu sürümlerde Google Mobile Ads SDK’sı reklam göstermek için; Google User Messaging Platform (UMP) SDK’sı ise ilgili bölgelerde rıza bilgisini sunmak ve yönetmek için kullanılabilir. Uygulamada mevcut yapılandırmaya bağlı olarak uygulama açılışında veya kullanıcının reklam izlemeyi seçtiği destek akışında reklam gösterilebilir. VPN engellemesi aktifken reklam gösterimi uygun olmayabilir.</p>
+        <p>Google’ın SDK’ları, yapılandırmaya, bölgeye, cihaz ayarlarına ve rıza tercihlerinize bağlı olarak IP adresi, cihaz/reklam tanımlayıcıları, uygulama ve reklam etkileşim bilgileri, yaklaşık konum çıkarımı ve tanılama/performance verileri gibi bilgileri işleyebilir. Hangi verilerin işlendiği Google hizmetlerine, sürüme ve yapılandırmaya bağlıdır. Google’ın veri kullanımını Netkilit kontrol etmez.</p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Gizlilik Politikası</a></li>
+          <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google’ın reklam teknolojileri ve verileri</a></li>
+          <li><a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Reklam Merkezi ve reklam tercihleri</a></li>
+        </ul>
+        <p>Rıza ekranlarının sunulması, bulunduğunuz yerdeki hukuki yükümlülüklerin yerine getirildiği anlamına tek başına gelmez. Yayıncı, AdMob/UMP yapılandırmasını, Play Console veri güvenliği beyanını, hedef kitle ayarlarını ve bu politikayı yayımladığı uygulama sürümüyle uyumlu tutmalıdır.</p>
+      </section>
+
+      <section id="sharing">
+        <h2>4. Paylaşım, hizmet sağlayıcılar ve uluslararası aktarım</h2>
+        <p>Netkilit, kullanıcı hesabı veya kendi reklam sunucusunu işletmez ve kişisel bilgileri satmak için tasarlanmamıştır. Reklamlar etkin olduğunda Google’ın reklam ve rıza SDK’ları bilgileri doğrudan kendi hizmetleri kapsamında işleyebilir. Google’ın veriyi saklama, paylaşma ve ülkeler arası aktarma uygulamaları Google’ın politikalarına ve geçerli ayarlara tabidir; ayrıntılar için yukarıdaki Google bağlantılarını inceleyin.</p>
+        <p>Android işletim sistemi ve cihaz üreticisi de VPN, güvenli depolama, yedekleme ve tanılama özelliklerini kendi kontrolleri altında sağlayabilir.</p>
+      </section>
+
+      <section id="retention">
+        <h2>5. Saklama ve silme</h2>
+        <p>Netkilit’in cihazda tuttuğu tercihler, siz uygulama içindeki ayarları değiştirene, uygulama verisini temizleyene veya uygulamayı kaldırana kadar saklanır. Android’in yedekleme ve cihaz davranışları farklılık gösterebilir. Uygulamayı kaldırmak Google’ın daha önce reklam hizmetleri kapsamında işlemiş olabileceği bilgileri otomatik olarak silmez; bu tür talepler için Google’ın gizlilik araçlarını kullanın.</p>
+        <p>Netkilit’in kendi backend’i olmadığı için uygulama tarafından sunucuda tutulan bir kullanıcı profili veya VPN trafik geçmişi bulunmaz.</p>
+      </section>
+
+      <section id="choices">
+        <h2>6. Tercihleriniz ve hak talepleri</h2>
+        <ul>
+          <li>VPN engellemesini uygulama içinden durdurabilir ve VPN iznini Android ayarlarından iptal edebilirsiniz.</li>
+          <li>Dil, uygulama kapsamı ve zamanlayıcı tercihlerinizi uygulama ayarlarından değiştirebilirsiniz.</li>
+          <li>Android ayarlarından uygulama verisini temizleyebilir veya uygulamayı kaldırabilirsiniz; bu işlem cihazdaki yerel tercihleri etkiler.</li>
+          <li>Reklam ve rıza tercihlerini, sunulduğu durumlarda uygulamadaki Google rıza akışından ve Google’ın reklam/gizlilik araçlarından yönetebilirsiniz.</li>
+          <li>Netkilit’e ileteceğiniz gizlilik talepleri için <a href="mailto:info@netkilit.com">info@netkilit.com</a> adresine yazın. Google tarafından işlenen verilere ilişkin taleplerin ayrıca Google’a iletilmesi gerekebilir.</li>
+        </ul>
+      </section>
+
+      <section id="security">
+        <h2>7. Güvenlik ve hizmetin sınırları</h2>
+        <p>Uygulama kilidi doğrulayıcısı Android’in güvenli depolama mekanizmasıyla korunur. Bununla birlikte hiçbir depolama, işletim sistemi, ağ veya uygulama için mutlak güvenlik ya da kesintisiz çalışma garantisi verilemez. VPN izni, Android sürümü, üretici kısıtlamaları, ağ değişiklikleri veya başka VPN uygulamaları uygulamanın davranışını etkileyebilir.</p>
+        <p>Netkilit Wi-Fi veya mobil veri anahtarlarını kapatmaz. Android’deki Always-on VPN veya lockdown gibi seçenekler varsa bunlar kullanıcı tarafından Android ayarlarından yapılandırılır; bu uygulama bunları zorunlu olarak etkinleştirmez.</p>
+      </section>
+
+      <section id="children">
+        <h2>8. Çocukların gizliliği</h2>
+        <p>Netkilit’in kendi sunucusunda yaş veya çocuk profili oluşturulmaz. Reklam SDK’larının çocuklara yönelik uygulama ve kullanıcılar için gerektirdiği ayarlar, uygulamanın Play Console’daki hedef kitle seçimi ve dağıtım koşullarıyla uyumlu olarak yayıncı tarafından yapılandırılmalıdır. Uygulamanın çocuklara yönelik bir kitleye sunulması planlanıyorsa, yayımdan önce ilgili ülke kuralları ve Google Play/AdMob çocuk politikaları ayrıca incelenmelidir.</p>
+      </section>
+
+      <section id="changes">
+        <h2>9. Bu politikadaki değişiklikler</h2>
+        <p>Uygulama özellikleri, SDK’lar veya mevzuat değiştiğinde bu politika güncellenebilir. Güncel sürüm bu web sayfasında yayımlanır; önemli değişikliklerde uygulama içinden veya mağaza açıklamasından ayrıca bilgi verilebilir. Üst bölümdeki güncelleme tarihi son revizyonu gösterir.</p>
+      </section>
+
+      <section id="contact">
+        <h2>10. İletişim</h2>
+        <p>Gizlilik ve kişisel veri talepleri için:</p>
+        <div class="callout">
+          <strong>Netkilit uygulama yayıncısı</strong><br>
+          E-posta: <a href="mailto:info@netkilit.com">info@netkilit.com</a><br>
+          Son güncelleme: 20 Ekim 2026
+        </div>
+      </section>
+    </article>
+
+    <aside class="contact">
+      <h2>Yayımdan önce kısa kontrol</h2>
+      <p>Play Console’a eklemeden önce bu metni kullandığın AdMob/UMP yapılandırması ve Play Console veri güvenliği beyanıyla karşılaştır. Mevzuat gerektiriyorsa “Netkilit uygulama yayıncısı” ifadesini gerçek kişi/şirket unvanı ve gereken iletişim bilgileriyle tamamla. Bu sayfa ürünün mevcut işleyişini açıklar; hukuki danışmanlık veya mevzuata uygunluk garantisi değildir.</p>
+    </aside>
+
+    <footer>© Netkilit · Gizliliğinize saygı duyan, cihaz üzerinde çalışan internet engelleme uygulaması.</footer>
+  </main>
+</body>
+</html>
